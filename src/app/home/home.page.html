@@ -15,27 +15,27 @@
       <!-- Rot-Anteil -->
       <ion-item>
         <ion-label position="fixed">Rot</ion-label>
-        <ion-range color="danger" min="0" max="255" step="1" value="240" pin="true" snaps="true">
-          <ion-icon  color="danger" slot="start" size="small" name="sunny">0%</ion-icon>
-          <ion-icon  color="danger" slot="end"   size="large" name="sunny">100%</ion-icon>
+        <ion-range color="danger" min="0" max="255" step="1" pin="true" snaps="true" [(ngModel)]="rotWert" (ionChange)="onFarbanteilChanged()">
+          <ion-icon color="danger" slot="start" size="small" name="sunny">0%</ion-icon>
+          <ion-icon color="danger" slot="end"   size="large" name="sunny">100%</ion-icon>
         </ion-range>
       </ion-item>
 
       <!-- Grün-Anteil -->
       <ion-item>
         <ion-label position="fixed">Grün</ion-label>
-        <ion-range color="success" min="0" max="255" step="1" value="0" pin="true" snaps="true">
-          <ion-icon  color="success" slot="start" size="small" name="sunny">0%</ion-icon>
-          <ion-icon  color="success" slot="end"   size="large" name="sunny">100%</ion-icon>
+        <ion-range color="success" min="0" max="255" step="1" pin="true" snaps="true" [(ngModel)]="gruenWert" (ionChange)="onFarbanteilChanged()">
+          <ion-icon color="success" slot="start" size="small" name="sunny">0%</ion-icon>
+          <ion-icon color="success" slot="end"   size="large" name="sunny">100%</ion-icon>
         </ion-range>
       </ion-item>
 
       <!-- Blau-Anteil -->
       <ion-item>
         <ion-label position="fixed">Blau</ion-label>
-        <ion-range color="tertiary" min="0" max="255" step="1" value="0" pin="true" snaps="true">
-          <ion-icon  color="tertiary" slot="start" size="small" name="sunny">0%</ion-icon>
-          <ion-icon  color="tertiary" slot="end"   size="large" name="sunny">100%</ion-icon>
+        <ion-range color="tertiary" min="0" max="255" step="1" pin="true" snaps="true" [(ngModel)]="blauWert" (ionChange)="onFarbanteilChanged()">
+          <ion-icon color="tertiary" slot="start" size="small" name="sunny">0%</ion-icon>
+          <ion-icon color="tertiary" slot="end"   size="large" name="sunny">100%</ion-icon>
         </ion-range>
       </ion-item>
 
