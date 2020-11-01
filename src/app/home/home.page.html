@@ -1,20 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Farbwahl
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+    <ion-list>
+      <ion-list-header>
+        Intensität für die drei Grundfarben einstellen
+      </ion-list-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+      <!-- Rot-Anteil -->
+      <ion-item>
+        <ion-range color="danger" min="0" max="255" step="1" value="240" pin="true" snaps="true">
+          <ion-icon  color="danger" slot="start" size="small" name="sunny">0%</ion-icon>
+          <ion-icon  color="danger" slot="end"   size="large" name="sunny">100%</ion-icon>
+        </ion-range>
+      </ion-item>
+
+      <!-- Grün-Anteil -->
+      <ion-item>
+        <ion-range color="success" min="0" max="255" step="1" value="0" pin="true" snaps="true">
+          <ion-icon  color="success" slot="start" size="small" name="sunny">0%</ion-icon>
+          <ion-icon  color="success" slot="end"   size="large" name="sunny">100%</ion-icon>
+        </ion-range>
+      </ion-item>
+
+      <!-- Blau-Anteil -->
+      <ion-item>
+        <ion-range color="tertiary" min="0" max="255" step="1" value="0" pin="true" snaps="true">
+          <ion-icon  color="tertiary" slot="start" size="small" name="sunny">0%</ion-icon>
+          <ion-icon  color="tertiary" slot="end"   size="large" name="sunny">100%</ion-icon>
+        </ion-range>
+      </ion-item>
+
+    </ion-list>
 </ion-content>
