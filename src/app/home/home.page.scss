@@ -26,6 +26,17 @@
   text-decoration: none;
 }
 
-h1 {
+#hex-code-title {
   font-family: monospace;
+  font-weight: bold;
+  text-align: center;
+  font-size: 400%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border: 1px dotted;
+}
+
+#farb-anzeige-toolbar {
+  margin-top: 5%;
+  margin-bottom: 5%;
 }

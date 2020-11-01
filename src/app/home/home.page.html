@@ -7,9 +7,10 @@
 </ion-header>
 
 <ion-content>
+
     <ion-list>
       <ion-list-header>
-        Intensität für die drei Grundfarben einstellen
+        Intensität für die drei Grundfarben einstellen:
       </ion-list-header>
 
       <!-- Rot-Anteil -->
@@ -44,10 +45,10 @@
 
     </ion-list>
 
-    &nbsp;&nbsp;
 
-    <ion-chip style="--background:var(--gewaehlte-farbe)">
-      <ion-label><h1>&nbsp;{{farbeHexCode}}&nbsp;</h1></ion-label>
-    </ion-chip>
+
+    <ion-toolbar id="farb-anzeige-toolbar" style="--background:var(--gewaehlte-farbe)">
+      <ion-title id="hex-code-title">{{farbeHexCode}}</ion-title>
+    </ion-toolbar>
 
 </ion-content>
