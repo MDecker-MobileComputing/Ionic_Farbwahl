@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Farbwahl
+      Farbauswahl
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,6 +14,7 @@
 
       <!-- Rot-Anteil -->
       <ion-item>
+        <ion-label position="fixed">Rot</ion-label>
         <ion-range color="danger" min="0" max="255" step="1" value="240" pin="true" snaps="true">
           <ion-icon  color="danger" slot="start" size="small" name="sunny">0%</ion-icon>
           <ion-icon  color="danger" slot="end"   size="large" name="sunny">100%</ion-icon>
@@ -22,6 +23,7 @@
 
       <!-- Grün-Anteil -->
       <ion-item>
+        <ion-label position="fixed">Grün</ion-label>
         <ion-range color="success" min="0" max="255" step="1" value="0" pin="true" snaps="true">
           <ion-icon  color="success" slot="start" size="small" name="sunny">0%</ion-icon>
           <ion-icon  color="success" slot="end"   size="large" name="sunny">100%</ion-icon>
@@ -30,6 +32,7 @@
 
       <!-- Blau-Anteil -->
       <ion-item>
+        <ion-label position="fixed">Blau</ion-label>
         <ion-range color="tertiary" min="0" max="255" step="1" value="0" pin="true" snaps="true">
           <ion-icon  color="tertiary" slot="start" size="small" name="sunny">0%</ion-icon>
           <ion-icon  color="tertiary" slot="end"   size="large" name="sunny">100%</ion-icon>
