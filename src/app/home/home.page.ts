@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -19,10 +20,12 @@ export class HomePage {
   /** Hex-Code der aktuelles ausgewählten Farbe. */
   private farbeHexCode : string = "";
 
+
   /**
-   * Konstruktor, führt Event-Handler-Methode aus.
+   * Konstruktor für Dependency Injection, führt auch Event-Handler-Methode
+   * zur Darstellung aktueller Farbwert aus.
    */
-  constructor() {
+  constructor(private toastController: ToastController) {
 
     this.onFarbanteilChanged();
   }
@@ -50,6 +53,28 @@ export class HomePage {
     this.farbeHexCode = "#" + rotHex + gruenHex + blauHex;
 
     document.body.style.setProperty("--gewaehlte-farbe", this.farbeHexCode);
+  }
+
+
+  /**
+   * Event-Handler-Button
+   */
+  onFarbeSpeichernButton() {
+
+    this.zeigeToast( `Farbe ${this.farbeHexCode} würde jetzt gespeichert werden -- not implemented yet :-(` );
+  }
+
+
+  /**
+   * Toast anzeigen, siehe auch https://ionicframework.com/docs/api/toast
+   */
+  async zeigeToast(nachricht: string) {
+
+    const toast =
+          await this.toastController.create({ message: nachricht,
+                                              duration: 2000
+                                            });
+    await toast.present();
   }
 
 }
