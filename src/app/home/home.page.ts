@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { DatenbankService } from '../datenbank.service';
+import { SpeicherService } from '../speicher.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +10,13 @@ import { DatenbankService } from '../datenbank.service';
 export class HomePage {
 
   /** Wert für Rot-Anteil von Farbe (0..255). */
-  private rotWert   : number = 240;
+  private rotWert : number = 240;
 
   /** Wert für Grün-Anteil von Farbe (0..255). */
   private gruenWert : number = 10;
 
   /** Wert für Balu-Anteil von Farbe (0..255). */
-  private blauWert  : number = 10;
+  private blauWert : number = 10;
 
   /** Hex-Code der aktuelles ausgewählten Farbe. */
   private farbeHexCode : string = "";
@@ -27,7 +27,7 @@ export class HomePage {
    * zur Darstellung aktueller Farbwert aus.
    */
   constructor( private toastController: ToastController,
-               private datenbankService: DatenbankService,
+               private speicherService: SpeicherService,
              ) {
 
     this.onFarbanteilChanged();
@@ -62,9 +62,11 @@ export class HomePage {
   /**
    * Event-Handler-Button
    */
-  onFarbeSpeichernButton() {
+  async onFarbeSpeichernButton() {
 
-    this.zeigeToast( `Farbe ${this.farbeHexCode} würde jetzt gespeichert werden -- not implemented yet :-(` );
+    let anzahlGespeichert = await this.speicherService.speichereFarbcode(this.farbeHexCode);
+
+    this.zeigeToast( `Farbcode wurde gespeichert, es sind jetzt ${anzahlGespeichert} Farben gespeichert.` );
   }
 
 
