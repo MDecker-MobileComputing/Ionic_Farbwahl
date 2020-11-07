@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { DatenbankService } from '../datenbank.service';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,9 @@ export class HomePage {
    * Konstruktor für Dependency Injection, führt auch Event-Handler-Methode
    * zur Darstellung aktueller Farbwert aus.
    */
-  constructor(private toastController: ToastController) {
+  constructor( private toastController: ToastController,
+               private datenbankService: DatenbankService,
+             ) {
 
     this.onFarbanteilChanged();
   }
