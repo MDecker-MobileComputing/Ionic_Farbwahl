@@ -1,5 +1,7 @@
 {
   "name": "Farbwahl",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
