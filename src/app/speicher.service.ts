@@ -28,11 +28,35 @@ export class SpeicherService {
    */
   async speichereFarbcode(farbcode: string) {
 
-    await this.storage.set(farbcode, "");
+    await this.storage.set(farbcode, "lorem ipsum");
 
     let anzahlFarben = await this.getAnzahlGespeicherteFarben();
 
     return anzahlFarben;
+  }
+
+
+  /**
+   * Abfrage, ob bestimmter Farbcode schon gespeichert ist.
+   * 
+   * @param farbcode  Farbcode, für den nachgeschaut werden soll, ob er schon gespeichert ist.
+   * 
+   * @return  Wenn der Farbcode schon gespeichert ist, dann wird der Name zurückgegeben; ist
+   *          der Farbcode noch nicht gespeichert wird ein leerer String (aber nie null!) 
+   *          zurückgegeben.
+   */
+  async istFarbeSchonGespeichert(farbcode: string) {
+
+    let nameFuerFarbcode = await this.storage.get(farbcode);
+
+    console.log(`nameFarbcode=${nameFuerFarbcode}`);
+
+    if (nameFuerFarbcode === null) {
+
+      return "";
+    }
+
+    return nameFuerFarbcode;
   }
 
 

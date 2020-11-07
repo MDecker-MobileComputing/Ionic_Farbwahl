@@ -60,9 +60,17 @@ export class HomePage {
 
 
   /**
-   * Event-Handler-Button
+   * Event-Handler-Methode für Button zum Speichern der aktuellen Farbe.
    */
   async onFarbeSpeichernButton() {
+
+    let nameVonFarbe = await this.speicherService.istFarbeSchonGespeichert(this.farbeHexCode);
+
+    if (nameVonFarbe.length > 0) {
+
+      this.zeigeToast( `Farbcode ist schon unter dem Name >${nameVonFarbe}< gespeichert.` ); 
+      return;
+    }
 
     let anzahlGespeichert = await this.speicherService.speichereFarbcode(this.farbeHexCode);
 

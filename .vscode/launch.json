@@ -1,0 +1,14 @@
+{
+    // Konfiguration für Debugging: 
+    // https://ionicframework.com/docs/troubleshooting/debugging#debugging-with-visual-studio-locally-in-chrome-both-android-ios-
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:8100",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
