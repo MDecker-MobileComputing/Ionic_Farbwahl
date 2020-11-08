@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 import { SpeicherService } from '../speicher.service';
 
 @Component({
@@ -27,6 +27,7 @@ export class HomePage {
    * zur Darstellung aktueller Farbwert aus.
    */
   constructor( private toastController: ToastController,
+               private alertController: AlertController,
                private speicherService: SpeicherService,
              ) {
 
@@ -68,13 +69,76 @@ export class HomePage {
 
     if (nameVonFarbe.length > 0) {
 
-      this.zeigeToast( `Farbcode ist schon unter dem Name >${nameVonFarbe}< gespeichert.` ); 
+      this.zeigeToast( `Farbcode kann nicht gespeichert werden, weil er schon unter dem Namen >${nameVonFarbe}< gespeichert ist.` );
       return;
     }
 
+    await this.frageNutzerNachNameFuerFarbe();
+
+    /*
     let anzahlGespeichert = await this.speicherService.speichereFarbcode(this.farbeHexCode);
 
-    this.zeigeToast( `Farbcode wurde gespeichert, es sind jetzt ${anzahlGespeichert} Farben gespeichert.` );
+    */
+  }
+
+  /**
+   * Dialog (Alert) öffnen, in dem der Nutzer den Namen eingeben soll, unter dem
+   * die Farbe gespeichert wird.
+   *
+   * Die handler-Funktionen für die beiden Buttons werden mit Pfeilfunktionen
+   * () => {...} statt function() {...} definiert, damit "this" auf das
+   * Page-Objekt zeigt, siehe auch
+   * https://github.com/ionic-team/ionic-framework/issues/13446#issuecomment-345411733
+   */
+  async frageNutzerNachNameFuerFarbe() {
+
+    const speichernButtonObject = {
+      text: "Speichern",
+      handler: async (inputWerte) => {
+
+        let farbname = inputWerte.farbname;
+
+        if (farbname !== null) {
+
+          farbname = farbname.trim();
+        }
+
+        if (farbname === null || farbname.length === 0) {
+
+          this.zeigeToast(`Kann Farbe nicht unter leerem Namen speichern.`);
+          return;
+        }
+
+        let anzahl = await this.speicherService.speichereFarbcode(this.farbeHexCode, farbname);
+
+        this.zeigeToast( `Farbcode wurde gespeichert, es sind jetzt insgesamt ${anzahl} Farben gespeichert.` );
+      }
+    };
+
+    const abbrechenButtonObject = {
+      text: "Abbrechen",
+      role: "cancel",
+      handler: () => {
+
+        this.zeigeToast("Farbe nicht gespeichert.");
+      }
+    };
+
+    const alert = await
+          this.alertController.create({ header: "Name für Farbe",
+                                        message: "Geben Sie den Namen ein, unter dem der Farbcode gespeichert wird.",
+                                        inputs: [{
+                                          label: "Name:",
+                                          name: "farbname",
+                                          type: "text"
+                                        }],
+                                        buttons: [
+                                          speichernButtonObject,
+                                          abbrechenButtonObject
+                                        ]
+    });
+
+    await alert.present();
   }
 
 

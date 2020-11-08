@@ -3,7 +3,7 @@ import { Storage } from '@ionic/storage';
 
 
 /**
- * Service-Klasse kapselt Persistenz "ionic-storage"
+ * Service-Klasse kapselt Persistenz mit "ionic-storage"
  * ( https://ionicframework.com/docs/angular/storage#ionic-storage ).
  *
  * "ionic-storage" Projekt hinzufügen: npm install --save @ionic/storage
@@ -24,11 +24,14 @@ export class SpeicherService {
    * @param farbcode  Farbcode als Hex-String, der gespeichert werden soll,
    *                  z.B. #f04c0a.
    *
+   * @param farbname  Vom Benutzer der Farbe gegebener Name, z.B. "himmelblau" oder
+   *                  "Hintergrundfarbe für neue Homepage".
+   *
    * @return  Anzahl der Farbcodes, die jetzt gespeichert ist.
    */
-  async speichereFarbcode(farbcode: string) {
+  async speichereFarbcode(farbcode: string, farbname: string) {
 
-    await this.storage.set(farbcode, "lorem ipsum");
+    await this.storage.set(farbcode, farbname );
 
     let anzahlFarben = await this.getAnzahlGespeicherteFarben();
 
@@ -38,11 +41,11 @@ export class SpeicherService {
 
   /**
    * Abfrage, ob bestimmter Farbcode schon gespeichert ist.
-   * 
+   *
    * @param farbcode  Farbcode, für den nachgeschaut werden soll, ob er schon gespeichert ist.
-   * 
+   *
    * @return  Wenn der Farbcode schon gespeichert ist, dann wird der Name zurückgegeben; ist
-   *          der Farbcode noch nicht gespeichert wird ein leerer String (aber nie null!) 
+   *          der Farbcode noch nicht gespeichert wird ein leerer String (aber nie null!)
    *          zurückgegeben.
    */
   async istFarbeSchonGespeichert(farbcode: string) {
