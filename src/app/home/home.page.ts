@@ -74,11 +74,6 @@ export class HomePage {
     }
 
     await this.frageNutzerNachNameFuerFarbe();
-
-    /*
-    let anzahlGespeichert = await this.speicherService.speichereFarbcode(this.farbeHexCode);
-
-    */
   }
 
   /**
@@ -126,7 +121,7 @@ export class HomePage {
 
     const alert = await
           this.alertController.create({ header: "Name für Farbe",
-                                        message: "Geben Sie den Namen ein, unter dem der Farbcode gespeichert wird.",
+                                        message: "Geben Sie den Namen ein, unter dem der Farbcode gespeichert werden soll.",
                                         inputs: [{
                                           label: "Name:",
                                           name: "farbname",
