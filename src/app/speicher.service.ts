@@ -17,6 +17,7 @@ export class SpeicherService {
    * Konstruktor für Dependency Injection.
    */
   constructor(private storage: Storage) { }
+  
 
   /**
    * Methode zum Speichern eines Farbcodes.
