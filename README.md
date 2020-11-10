@@ -7,6 +7,14 @@ The app uses three instances of `ion-range` to define a color by choosing the re
 <br>
 
 ----
+
+## Screenshots ##
+
+![Screenshot](screenshot_1.png)
+
+<br>
+
+----
 ## License ##
 
 See the [LICENSE file](LICENSE.md) for license rights and limitations (BSD 3-Clause License) for the files in this repository.
