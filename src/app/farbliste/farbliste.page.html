@@ -16,7 +16,7 @@
     <ion-item *ngFor="let farbObjekt of farbArrayPromise">
       <ion-label>
         <h1>{{farbObjekt.farbname}}</h1>
-        <h1 id="farbcode" style="--background:var(--gewaehlte-farbe)">{{farbObjekt.farbcode}}</h1>
+        <h1 id="farbcode" [style.background]="farbObjekt.farbcode">{{farbObjekt.farbcode}}</h1>
       </ion-label>
     </ion-item>
 
