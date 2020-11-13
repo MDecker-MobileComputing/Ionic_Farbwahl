@@ -120,17 +120,14 @@ export class HomePage {
     };
 
     const alert = await
-          this.alertController.create({ header: "Name für Farbe",
-                                        message: "Geben Sie den Namen ein, unter dem der Farbcode gespeichert werden soll.",
-                                        inputs: [{
-                                          label: "Name:",
-                                          name: "farbname",
-                                          type: "text"
-                                        }],
-                                        buttons: [
-                                          speichernButtonObject,
-                                          abbrechenButtonObject
-                                        ]
+          this.alertController.create({ 
+            header: "Name für Farbe",
+            message: "Geben Sie den Namen ein, unter dem der Farbcode gespeichert werden soll.",
+            backdropDismiss: false,
+            inputs: [{ label: "Name:", name: "farbname", type: "text" }],
+            buttons: [
+              speichernButtonObject, abbrechenButtonObject               
+            ]
     });
 
     await alert.present();
@@ -142,10 +139,13 @@ export class HomePage {
    */
   async zeigeToast(nachricht: string) {
 
+    const ANZEIGEDAUER_SEKUNDEN = 2;
+
     const toast =
-          await this.toastController.create({ message: nachricht,
-                                              duration: 2000
-                                            });
+          await this.toastController.create({ 
+            message: nachricht,
+            duration: ANZEIGEDAUER_SEKUNDEN * 1000
+          });
     await toast.present();
   }
 
