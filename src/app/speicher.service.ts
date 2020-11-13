@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 
-
 /**
  * Service-Klasse kapselt Persistenz mit "ionic-storage"
  * ( https://ionicframework.com/docs/angular/storage#ionic-storage ).
@@ -18,7 +17,7 @@ export class SpeicherService {
    * Konstruktor für Dependency Injection.
    */
   constructor(private storage: Storage) { }
-  
+
 
   /**
    * Methode zum Speichern eines Farbcodes.
@@ -65,24 +64,40 @@ export class SpeicherService {
   }
 
 
-  /*
+  /**
+   * Methode liefert alle Farbobjekte zurück.
+   *
+   * @return  Promise auf einen Array von Farbobjekten. Die Farbojekte haben die
+   *          beiden Attribute "farbcode" und "farbname".
+   */
   async holeAlleFarbcodes() {
 
      let ergebnisArray = [];
 
+     this.storage.forEach( (farbname, farbschluessel) => {
+
+        let farbObjekt = { farbcode: farbschluessel,
+                           farbname: farbname
+                         };
+
+        ergebnisArray.push(farbObjekt);
+     });
+
      return ergebnisArray;
   }
-  *
+
 
 
   /**
    * Getter für Gesamtanzahl der gespeicherten Farben.
    *
-   * @return  Anzahl der aktuell  gespeicherten Farben.
+   * @return  Anzahl der aktuell gespeicherten Farben.
    */
-  getAnzahlGespeicherteFarben() {
+   async getAnzahlGespeicherteFarben() {
 
-    let anzahl = this.storage.length();
+    let anzahl = await this.storage.length();
+
+    console.log(`anzahl=${anzahl}`);
 
     return anzahl;
   }

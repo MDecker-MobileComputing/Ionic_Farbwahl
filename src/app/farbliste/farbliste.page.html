@@ -2,8 +2,8 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>    
-    <ion-title>Gespeicherte Farben</ion-title>
+    </ion-buttons>
+    <ion-title>Liste aller gespeicherten Farben ( {{anzahlFarbenPromise | async}} )</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,12 +11,15 @@
 
   <ion-list>
 
-    <ion-list-header>
-      Alle gespeicherten Farben (?)}
-    </ion-list-header>
+    <!-- <ion-list-header></ion-list-header> -->
 
-    <!-- <ion-item *ngFor="let farbe of "></ion-item> -->  
+    <ion-item *ngFor="let farbObjekt of farbArrayPromise">
+      <ion-label>
+        <h1>{{farbObjekt.farbname}}</h1>
+        <h1 id="farbcode" style="--background:var(--gewaehlte-farbe)">{{farbObjekt.farbcode}}</h1>
+      </ion-label>
+    </ion-item>
 
-  </ion-list>i    
+  </ion-list>
 
 </ion-content>

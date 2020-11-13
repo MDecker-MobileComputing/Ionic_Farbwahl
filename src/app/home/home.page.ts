@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { ToastController, AlertController, NavController } from '@ionic/angular';
 import { SpeicherService } from '../speicher.service';
 
+
+/**
+ * Klasse für Hauptseite zur Definition eines Farbcodes mit Schiebereglern für die
+ * drei Grundfarben.
+ */
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -123,7 +128,7 @@ export class HomePage {
     const alert = await
           this.alertController.create({
             header: "Name für Farbe",
-            message: "Geben Sie den Namen ein, unter dem der Farbcode gespeichert werden soll.",
+            message: "Geben Sie den Namen ein, unter dem der Farbcode gespeichert werden soll:",
             backdropDismiss: false,
             inputs: [{ label: "Name:", name: "farbname", type: "text" }],
             buttons: [
