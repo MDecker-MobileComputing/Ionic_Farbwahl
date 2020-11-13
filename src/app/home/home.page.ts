@@ -141,6 +141,8 @@ export class HomePage {
   async onGeheZuListe() {
 
     this.navController.navigateForward("/farbliste");
+
+    console.log("Sollte jetzt auf andere Seite navigiert sein.");
   }
 
 

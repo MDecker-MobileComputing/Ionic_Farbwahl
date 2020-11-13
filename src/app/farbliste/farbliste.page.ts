@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SpeicherService } from '../speicher.service';
+
 
 @Component({
   selector: 'app-farbliste',
   templateUrl: './farbliste.page.html',
   styleUrls: ['./farbliste.page.scss'],
 })
-export class FarblistePage implements OnInit {
+export class FarblistePage {
 
-  constructor() { }
+  constructor(private speicherService: SpeicherService) { 
 
-  ngOnInit() {
+    console.log("Farbliste initialisiert.");
   }
 
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 
+
 /**
  * Service-Klasse kapselt Persistenz mit "ionic-storage"
  * ( https://ionicframework.com/docs/angular/storage#ionic-storage ).
@@ -79,9 +80,9 @@ export class SpeicherService {
    *
    * @return  Anzahl der aktuell  gespeicherten Farben.
    */
-  async getAnzahlGespeicherteFarben() {
+  getAnzahlGespeicherteFarben() {
 
-    let anzahl = await this.storage.length();
+    let anzahl = this.storage.length();
 
     return anzahl;
   }
