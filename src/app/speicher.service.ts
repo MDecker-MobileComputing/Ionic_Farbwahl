@@ -87,7 +87,6 @@ export class SpeicherService {
   }
 
 
-
   /**
    * Getter für Gesamtanzahl der gespeicherten Farben.
    *
@@ -96,8 +95,6 @@ export class SpeicherService {
    async getAnzahlGespeicherteFarben() {
 
     let anzahl = await this.storage.length();
-
-    console.log(`anzahl=${anzahl}`);
 
     return anzahl;
   }
