@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'farbliste',
+    loadChildren: () => import('./farbliste/farbliste.module').then( m => m.FarblistePageModule)
+  },
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastController, AlertController } from '@ionic/angular';
+import { ToastController, AlertController, NavController } from '@ionic/angular';
 import { SpeicherService } from '../speicher.service';
 
 @Component({
@@ -28,6 +28,7 @@ export class HomePage {
    */
   constructor( private toastController: ToastController,
                private alertController: AlertController,
+               private navController  : NavController,
                private speicherService: SpeicherService,
              ) {
 
@@ -131,6 +132,15 @@ export class HomePage {
     });
 
     await alert.present();
+  }
+
+
+  /**
+   * Button-Event-Handler um zur Seite zu gehen, auf der alle gespeicherten Farben angezeigt werden.
+   */
+  async onGeheZuListe() {
+
+    this.navController.navigateForward("/farbliste");
   }
 
 
