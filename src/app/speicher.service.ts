@@ -83,7 +83,20 @@ export class SpeicherService {
         ergebnisArray.push(farbObjekt);
      });
 
-     return ergebnisArray;
+
+     // Sorting does not work?!?
+     ergebnisArray.sort((farbobj1, farbobj2) => {
+
+       let farbname1 = farbobj1.farbname;
+       let farbname2 = farbobj2.farbname;
+
+       if (farbname1 < farbname2) { return -1; }
+       if (farbname1 > farbname2) { return  1; }
+
+       return 0;
+     });
+
+    return ergebnisArray;
   }
 
 
