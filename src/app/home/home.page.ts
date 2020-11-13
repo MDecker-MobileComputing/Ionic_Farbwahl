@@ -121,13 +121,13 @@ export class HomePage {
     };
 
     const alert = await
-          this.alertController.create({ 
+          this.alertController.create({
             header: "Name für Farbe",
             message: "Geben Sie den Namen ein, unter dem der Farbcode gespeichert werden soll.",
             backdropDismiss: false,
             inputs: [{ label: "Name:", name: "farbname", type: "text" }],
             buttons: [
-              speichernButtonObject, abbrechenButtonObject               
+              speichernButtonObject, abbrechenButtonObject
             ]
     });
 
@@ -141,23 +141,24 @@ export class HomePage {
   async onGeheZuListe() {
 
     this.navController.navigateForward("/farbliste");
-
-    console.log("Sollte jetzt auf andere Seite navigiert sein.");
   }
 
 
   /**
    * Toast anzeigen, siehe auch https://ionicframework.com/docs/api/toast
+   *
+   * @param nachricht  Anzuzeigender Text
    */
   async zeigeToast(nachricht: string) {
 
     const ANZEIGEDAUER_SEKUNDEN = 2;
 
     const toast =
-          await this.toastController.create({ 
+          await this.toastController.create({
             message: nachricht,
             duration: ANZEIGEDAUER_SEKUNDEN * 1000
           });
+
     await toast.present();
   }
 
