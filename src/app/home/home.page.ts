@@ -47,13 +47,13 @@ export class HomePage {
    */
   onFarbanteilChanged() {
 
-    const HEX_BASIS_VALUE = 16;
+    const HEX_BASIS_WERT = 16;
 
     //console.log(`rot=${this.rotWert}, grün=${this.gruenWert}, blau=${this.blauWert}`);
 
-    let rotHex   = this.rotWert.toString(   HEX_BASIS_VALUE );
-    let gruenHex = this.gruenWert.toString( HEX_BASIS_VALUE );
-    let blauHex  = this.blauWert.toString(  HEX_BASIS_VALUE );
+    let rotHex   = this.rotWert.toString(   HEX_BASIS_WERT );
+    let gruenHex = this.gruenWert.toString( HEX_BASIS_WERT );
+    let blauHex  = this.blauWert.toString(  HEX_BASIS_WERT );
 
     // Jeder Hex-Wert muss zweistellig sein
     if (rotHex.length   === 1) { rotHex   = "0" + rotHex;   }
