@@ -61,8 +61,6 @@ export class HomePage {
     if (blauHex.length  === 1) { blauHex  = "0" + blauHex;  }
 
     this.farbeHexCode = "#" + rotHex + gruenHex + blauHex;
-
-    document.body.style.setProperty("--gewaehlte-farbe", this.farbeHexCode);
   }
 
 
