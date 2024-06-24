@@ -85,25 +85,24 @@ export class SpeicherService {
 
      const ergebnisArray : Farbe[] = [];
 
-     this.storage.forEach( ( farbname, farbschluessel ) => {
+     await this.storage.forEach( ( farbname, farbschluessel ) => {
 
         const farbe = new Farbe( farbschluessel, farbname );
         ergebnisArray.push( farbe );
      });
 
+    ergebnisArray.sort( ( farbe1: Farbe, farbe2: Farbe ) => {
 
-     ergebnisArray.sort( ( farbe1: Farbe, farbe2: Farbe ) => {
+        let farbname1 = farbe1.farbname;
+        let farbname2 = farbe2.farbname;
 
-       let farbname1 = farbe1.farbname;
-       let farbname2 = farbe2.farbname;
+        if ( farbname1 < farbname2 ) { return -1; }
+        if ( farbname1 > farbname2 ) { return +1; }
 
-       if ( farbname1 < farbname2 ) { return -1; }
-       if ( farbname1 > farbname2 ) { return +1; }
+        return 0;
+      });
 
-       return 0;
-     });
-
-    return ergebnisArray;
+      return ergebnisArray;
   }
 
 
