@@ -71,7 +71,7 @@ export class HomePage {
     if ( nameVonFarbe.length > 0 ) {
 
       this.zeigeToast(
-        `Farbcode kann nicht gespeichert werden, weil er schon unter dem Namen >${nameVonFarbe}< gespeichert ist.` );
+        `Farbcode schon unter Namen >${nameVonFarbe}< gespeichert.` );
 
       return;
     }
