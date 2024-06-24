@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Farbe } from './farbe';
 
 
 /**
  * Service-Klasse kapselt Persistenz mit "ionic-storage"
  * ( https://ionicframework.com/docs/angular/storage#ionic-storage ).
- *
+ * Installation:
+ * ```
  * "ionic-storage" Projekt hinzufügen: npm install --save @ionic/storage
+ * ```
+ * <br><br>
+ *
+ * Datenstruktur: Farbcode als Hex-String wird als Schlüssel verwendet,
+ *                Farbname als Wert.
  */
 @Injectable({
   providedIn: 'root'
@@ -14,27 +21,30 @@ import { Storage } from '@ionic/storage';
 export class SpeicherService {
 
   /**
-   * Konstruktor für Dependency Injection.
+   * Konstruktor für *Dependency Injection*.
    */
-  constructor(private storage: Storage) { }
+  constructor( private storage: Storage ) {
+
+    this.storage.create(); // wird ab Ionic 6 für @ionic/storage-angular benötigt!
+  }
 
 
   /**
    * Methode zum Speichern eines Farbcodes.
    *
    * @param farbcode  Farbcode als Hex-String, der gespeichert werden soll,
-   *                  z.B. #f04c0a.
+   *                  z.B. `#f04c0a`.
    *
-   * @param farbname  Vom Benutzer der Farbe gegebener Name, z.B. "himmelblau" oder
-   *                  "Hintergrundfarbe für neue Homepage".
+   * @param farbname  Vom Benutzer der Farbe gegebener Name, z.B. "himmelblau"
+   *                  oder "Hintergrundfarbe für neue Homepage".
    *
    * @return  Anzahl der Farbcodes, die jetzt gespeichert ist.
    */
-  async speichereFarbcode(farbcode: string, farbname: string) {
+  async speichereFarbcode( farbe: Farbe ) {
 
-    await this.storage.set(farbcode, farbname );
+    await this.storage.set( farbe.hexcode, farbe.farbname );
 
-    let anzahlFarben = await this.getAnzahlGespeicherteFarben();
+    const anzahlFarben = await this.getAnzahlGespeicherteFarben();
 
     return anzahlFarben;
   }
@@ -43,19 +53,20 @@ export class SpeicherService {
   /**
    * Abfrage, ob bestimmter Farbcode schon gespeichert ist.
    *
-   * @param farbcode  Farbcode, für den nachgeschaut werden soll, ob er schon gespeichert ist.
+   * @param farbcode  Farbcode, für den nachgeschaut werden soll,
+   *                  ob er schon gespeichert ist.
    *
-   * @return  Wenn der Farbcode schon gespeichert ist, dann wird der Name zurückgegeben; ist
-   *          der Farbcode noch nicht gespeichert wird ein leerer String (aber nie null!)
+   * @return  Wenn der Farbcode schon gespeichert ist, dann wird
+   *          der Name zurückgegeben; ist der Farbcode noch nicht
+   *          gespeichert wird ein leerer String (aber nie null!)
    *          zurückgegeben.
    */
-  async istFarbeSchonGespeichert(farbcode: string) {
+  async istFarbeSchonGespeichert( farbcode: string ) {
 
-    let nameFuerFarbcode = await this.storage.get(farbcode);
+    const nameFuerFarbcode = await this.storage.get( farbcode );
+    console.log( `nameFarbcode=${nameFuerFarbcode}` );
 
-    console.log(`nameFarbcode=${nameFuerFarbcode}`);
-
-    if (nameFuerFarbcode === null) {
+    if ( nameFuerFarbcode === null ) {
 
       return "";
     }
@@ -67,31 +78,27 @@ export class SpeicherService {
   /**
    * Methode liefert alle Farbobjekte zurück.
    *
-   * @return  Promise auf einen Array von Farbobjekten. Die Farbojekte haben die
-   *          beiden Attribute "farbcode" und "farbname".
+   * @return  Promise auf einen Array von Farbobjekten. Die Farbojekte
+   *          haben die beiden Attribute `farbcode` und `farbname`.
    */
-  async holeAlleFarbcodes() {
+  async holeAlleFarbcodes(): Promise<Farbe[]> {
 
-     let ergebnisArray = [];
+     const ergebnisArray : Farbe[] = [];
 
-     this.storage.forEach( (farbname, farbschluessel) => {
+     this.storage.forEach( ( farbname, farbschluessel ) => {
 
-        let farbObjekt = { farbcode: farbschluessel,
-                           farbname: farbname
-                         };
-
-        ergebnisArray.push(farbObjekt);
+        const farbe = new Farbe( farbschluessel, farbname );
+        ergebnisArray.push( farbe );
      });
 
 
-     // Sorting does not work?!?
-     ergebnisArray.sort((farbobj1, farbobj2) => {
+     ergebnisArray.sort( ( farbe1: Farbe, farbe2: Farbe ) => {
 
-       let farbname1 = farbobj1.farbname;
-       let farbname2 = farbobj2.farbname;
+       let farbname1 = farbe1.farbname;
+       let farbname2 = farbe2.farbname;
 
-       if (farbname1 < farbname2) { return -1; }
-       if (farbname1 > farbname2) { return  1; }
+       if ( farbname1 < farbname2 ) { return -1; }
+       if ( farbname1 > farbname2 ) { return +1; }
 
        return 0;
      });
@@ -105,9 +112,9 @@ export class SpeicherService {
    *
    * @return  Anzahl der aktuell gespeicherten Farben.
    */
-   async getAnzahlGespeicherteFarben() {
+   async getAnzahlGespeicherteFarben() : Promise<number> {
 
-    let anzahl = await this.storage.length();
+    const anzahl = await this.storage.length();
 
     return anzahl;
   }

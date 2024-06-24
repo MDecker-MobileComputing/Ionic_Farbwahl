@@ -12,8 +12,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'farbliste',
-    loadChildren: () => import('./farbliste/farbliste.module').then( m => m.FarblistePageModule)
+    path: 'seite2',
+    loadChildren: () => import('./seite2/seite2.module').then( m => m.Seite2PageModule)
   },
 ];
 

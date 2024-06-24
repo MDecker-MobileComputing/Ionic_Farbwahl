@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Gespeicherte Farben ({{ anzahlFarbenPromise | async }})</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-list>
+
+      <ion-item *ngFor="let farbObjekt of farbArrayPromise | async">
+
+        <ion-label>
+
+          <h1>{{farbObjekt.farbname}}</h1>
+          <h2 class="farbcode">{{farbObjekt.hexcode}}</h2>
+          <div [style.background]="farbObjekt.hexcode">&nbsp;</div>
+
+        </ion-label>
+
+      </ion-item>
+
+    </ion-list>
+
+</ion-content>

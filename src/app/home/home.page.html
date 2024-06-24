@@ -1,14 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Farbauswahl
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Hauptseite</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
     <ion-list>
+
       <ion-list-header>
         Intensität für die drei Grundfarben einstellen:
       </ion-list-header>
@@ -17,9 +19,9 @@
       <ion-item>
         <ion-label position="fixed">Rot</ion-label>
         <ion-range color="danger" min="0" max="255" step="1" pin="true" snaps="true"
-                   [(ngModel)]="rotWert" (ionChange)="onFarbanteilChanged()">
-          <ion-icon color="danger" slot="start" size="small" name="sunny">0%</ion-icon>
-          <ion-icon color="danger" slot="end"   size="large" name="sunny">100%</ion-icon>
+                   [(ngModel)]="rotWert" (ionChange)="onFarbanteilChanged()" >
+          <ion-label slot="start" class="schrift-groesser">  0%</ion-label>
+          <ion-label slot="end"   class="schrift-groesser">100%</ion-label>
         </ion-range>
       </ion-item>
 
@@ -27,9 +29,9 @@
       <ion-item>
         <ion-label position="fixed">Grün</ion-label>
         <ion-range color="success" min="0" max="255" step="1" pin="true" snaps="true"
-                   [(ngModel)]="gruenWert" (ionChange)="onFarbanteilChanged()">
-          <ion-icon color="success" slot="start" size="small" name="sunny">0%</ion-icon>
-          <ion-icon color="success" slot="end"   size="large" name="sunny">100%</ion-icon>
+                   [(ngModel)]="gruenWert" (ionChange)="onFarbanteilChanged()" >
+          <ion-label slot="start" class="schrift-groesser">  0%</ion-label>
+          <ion-label slot="end"   class="schrift-groesser">100%</ion-label>
         </ion-range>
       </ion-item>
 
@@ -37,24 +39,23 @@
       <ion-item>
         <ion-label position="fixed">Blau</ion-label>
         <ion-range color="tertiary" min="0" max="255" step="1" pin="true" snaps="true"
-                   [(ngModel)]="blauWert" (ionChange)="onFarbanteilChanged()">
-          <ion-icon color="tertiary" slot="start" size="small" name="sunny">0%</ion-icon>
-          <ion-icon color="tertiary" slot="end"   size="large" name="sunny">100%</ion-icon>
+                   [(ngModel)]="blauWert" (ionChange)="onFarbanteilChanged()" >
+          <ion-label slot="start" class="schrift-groesser">  0%</ion-label>
+          <ion-label slot="end"   class="schrift-groesser">100%</ion-label>
         </ion-range>
       </ion-item>
 
     </ion-list>
 
-    <ion-toolbar id="farb-anzeige-toolbar" style="--background:{{farbeHexCode}}">
+    &nbsp;
 
-      <ion-button slot="start" color="primary" (click)="onFarbeSpeichernButton()">
+    <ion-toolbar id="farb-anzeige-toolbar" [style.--background]="farbeHexCode">
+
+      <ion-title id="hex-code-title" >{{farbeHexCode}}</ion-title>
+      <ion-button slot="end" color="primary" (click)="onFarbeSpeichernButton()" >
         <ion-icon name="save"></ion-icon>
       </ion-button>
 
-      <ion-title id="hex-code-title">{{farbeHexCode}}</ion-title>
-
     </ion-toolbar>
-
-    <ion-button id="naviButton" size="large" color="secondary" (click)="onGeheZuListe()">Liste der gespeicherten Farben</ion-button>
 
 </ion-content>
