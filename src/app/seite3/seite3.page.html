@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Double Range</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-range min="1"
+               max="100"
+               step="1"
+               pin="true"
+               snaps="true"
+               [(ngModel)]="zweiWerte"
+               [dualKnobs]="true" >
+
+      <ion-label slot="start" class="schrift-groesser">  1</ion-label>
+      <ion-label slot="end"   class="schrift-groesser">100</ion-label>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Von {{zweiWerte.lower}} bis {{zweiWerte.upper}}
+      (Delta: {{zweiWerte.upper - zweiWerte.lower}})
+    </ion-label>
+  </ion-item>
+
+</ion-content>
