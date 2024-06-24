@@ -41,11 +41,14 @@ export class Seite2Page implements OnInit {
     this.farbenHolen();
   }
 
+  /**
+   * Methode, die vom Speicher-Service Promises mit der Anzahl der gespeicherten
+   * Farben und einen Array von Objekten der Klasse `Farbe` holt.
+   */
   private farbenHolen() {
 
       this.anzahlFarbenPromise = this.speicherService.getAnzahlGespeicherteFarben();
-
-      this.farbArrayPromise = this.speicherService.holeAlleFarbcodes();
+      this.farbArrayPromise    = this.speicherService.holeAlleFarbcodes();
   }
 
 }

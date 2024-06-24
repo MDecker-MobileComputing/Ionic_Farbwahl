@@ -49,8 +49,6 @@ export class HomePage {
 
     const HEX_BASIS_WERT = 16;
 
-    //console.log(`rot=${this.rotWert}, grün=${this.gruenWert}, blau=${this.blauWert}`);
-
     let rotHex   = this.rotWert.toString(   HEX_BASIS_WERT );
     let gruenHex = this.gruenWert.toString( HEX_BASIS_WERT );
     let blauHex  = this.blauWert.toString(  HEX_BASIS_WERT );
