@@ -42,8 +42,8 @@ export class HomePage {
 
 
   /**
-   * Event-Handler-Methode, die aufgerufen wird, wenn einer der RGB-Farbwerte über
-   * eines der "ion-range"-Elemente geändert wird.
+   * Event-Handler-Methode, die aufgerufen wird, wenn einer der RGB-Farbwerte
+   * über eines der "ion-range"-Elemente geändert wird.
    */
   onFarbanteilChanged() {
 
