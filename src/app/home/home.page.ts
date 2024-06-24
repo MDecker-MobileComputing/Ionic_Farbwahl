@@ -67,12 +67,10 @@ export class HomePage {
    */
   async onFarbeSpeichernButton() {
 
-    let nameVonFarbe = await this.speicherService.istFarbeSchonGespeichert( this.farbeHexCode );
+    const nameVonFarbe = await this.speicherService.istFarbeSchonGespeichert( this.farbeHexCode );
     if ( nameVonFarbe.length > 0 ) {
 
-      this.zeigeToast(
-        `Farbcode schon unter Namen >${nameVonFarbe}< gespeichert.` );
-
+      this.zeigeToast( `Farbcode schon unter Namen >${nameVonFarbe}< gespeichert.` );
       return;
     }
 
