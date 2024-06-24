@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SpeicherService } from '../speicher.service';
 import { Farbe } from '../farbe';
 
@@ -12,7 +12,7 @@ import { Farbe } from '../farbe';
   templateUrl: './seite2.page.html',
   styleUrls: ['./seite2.page.scss'],
 })
-export class Seite2Page implements OnInit {
+export class Seite2Page {
 
   /**
    * Asynchrone Funktion getAnzahlGespeicherteFarben() liefert Promise zurück,
@@ -34,12 +34,14 @@ export class Seite2Page implements OnInit {
 
 
   /**
-   * Lifecycle-Methode, die beim Initialisieren der Seite aufgerufen wird.
+   * Lifecycle-Methode, die bei (erneuter) Anzeige der Seite aufgerufen wird:
+   * Holt die Farben aus dem Speicher-Service.
    */
-  ngOnInit() {
+  ionViewDidEnter() {
 
     this.farbenHolen();
   }
+
 
   /**
    * Methode, die vom Speicher-Service Promises mit der Anzahl der gespeicherten
