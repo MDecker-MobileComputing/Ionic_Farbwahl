@@ -9,6 +9,7 @@ import { LowerUpperWerte } from '../LowerUpperWerte';
   selector: 'app-seite3',
   templateUrl: './seite3.page.html',
   styleUrls: ['./seite3.page.scss'],
+  standalone: false
 })
 export class Seite3Page {
 
