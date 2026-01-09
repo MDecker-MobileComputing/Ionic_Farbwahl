@@ -2,9 +2,10 @@
 
 <br>
 
-Simple [Ionic](https://ionicframework.com) app to demonstrate the UI component
-[ion-range](https://ionicframework.com/docs/api/range).
-The app uses three instances of `ion-range` to define a color by choosing the red, green and blue values (RGB).
+Diese Repository enthält ein [Ionic](https://ionicframework.com/)/Angular-Projekt für eine mobile App.
+Es wird damit die Verwendung der Komponenten [ion-range](https://ionicframework.com/docs/api/range) demonstriert.
+
+Die App verwendet drei Instanzen von `ion-range` um den Rot-, Grün- und Blau-Anteil einer Farbe im RGB-Modell zu definieren.
 
 <br>
 
